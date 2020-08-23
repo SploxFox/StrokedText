@@ -1,0 +1,23 @@
+{
+  "name": "stroked-text",
+  "version": "1.0.0",
+  "description": "Easy, cross-browser stroked text using SVG elements, written in TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stroked",
+    "text",
+    "html",
+    "dom"
+  ],
+  "author": "Splox",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
