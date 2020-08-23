@@ -12,6 +12,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -34,13 +45,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 exports.__esModule = true;
 exports.StrokedText = void 0;
 var React = __importStar(require("react"));
-var canvas = document.createElement('canvas');
-var ctx = canvas.getContext('2d');
-function getTextWidth(text, font) {
-    ctx.font = font;
-    var metrics = ctx.measureText(text);
-    return metrics;
-}
 var StrokedText = /** @class */ (function (_super) {
     __extends(StrokedText, _super);
     function StrokedText() {
@@ -49,13 +53,9 @@ var StrokedText = /** @class */ (function (_super) {
         return _this;
     }
     StrokedText.prototype.render = function () {
-        var _a, _b, _c;
-        return React.createElement("svg", { style: this.props.style, ref: this.svgRef },
-            React.createElement("text", { style: {
-                    stroke: (_a = this.props.stroke) !== null && _a !== void 0 ? _a : 'black',
-                    fill: (_b = this.props.stroke) !== null && _b !== void 0 ? _b : 'white',
-                    paintOrder: (_c = this.props.paintOrder) !== null && _c !== void 0 ? _c : 'stroke fill markers'
-                } }));
+        var _a, _b, _c, _d, _e, _f;
+        return React.createElement("svg", { style: __assign({ overflow: 'visible' }, this.props.style), ref: this.svgRef, className: (_a = this.props.className) !== null && _a !== void 0 ? _a : '' },
+            React.createElement("text", { className: (_b = this.props.textClassName) !== null && _b !== void 0 ? _b : '', style: __assign({ stroke: (_c = this.props.stroke) !== null && _c !== void 0 ? _c : 'black', fill: (_d = this.props.fill) !== null && _d !== void 0 ? _d : 'white', paintOrder: (_e = this.props.paintOrder) !== null && _e !== void 0 ? _e : 'stroke fill markers', strokeWidth: (_f = this.props.strokeWidth) !== null && _f !== void 0 ? _f : 2 }, this.props.textStyle) }, this.props.children));
     };
     StrokedText.prototype.updateSVG = function () {
         var bbox = this.svgRef.current.getBBox();

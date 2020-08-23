@@ -2,32 +2,30 @@ import * as React from 'react';
 
 export interface StrokedTextProps {
     style?: React.CSSProperties,
-    children: string
+    children?: string
     stroke?: string
     strokeWidth?: number, 
     fill?: string
     paintOrder?: string
-}
-
-
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d')!;
-
-function getTextWidth(text: string, font: string) {
-    ctx.font = font;
-    var metrics = ctx.measureText(text);
-    return metrics;
+    textStyle?: React.CSSProperties
+    textClassName?: string
+    className?: string
 }
 
 export class StrokedText extends React.Component<StrokedTextProps> {
     private svgRef = React.createRef<SVGSVGElement>();
     render() {
-        return <svg style={this.props.style} ref={this.svgRef}>
-            <text style={{
+        return <svg style={{
+            overflow: 'visible',
+            ...this.props.style
+        }} ref={this.svgRef} className={this.props.className ?? ''}>
+            <text className={this.props.textClassName ?? ''} style={{
                 stroke: this.props.stroke ?? 'black',
-                fill: this.props.stroke ?? 'white',
-                paintOrder: this.props.paintOrder ?? 'stroke fill markers'
-            }}></text>
+                fill: this.props.fill ?? 'white',
+                paintOrder: this.props.paintOrder ?? 'stroke fill markers',
+                strokeWidth: this.props.strokeWidth ?? 2,
+                ...this.props.textStyle
+            }}>{this.props.children}</text>
         </svg>
     }
 
